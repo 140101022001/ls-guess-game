@@ -7,9 +7,8 @@ function App() {
   const [message,setMessage] = useState("");
   const [disable, setDisable] = useState(false);
   const [newGame, setNewGame] = useState(false);
-  const guessNumber = useRef();
-  
   const [randomNumber, setRandomNumber] = useState(0);
+  const guessNumber = useRef();
 
   useEffect(() => {
     setRandomNumber(Math.floor(Math.random() * 100) + 1);
@@ -43,11 +42,12 @@ function App() {
     setMessage("");
     setDisable(false);
   }
+  console.log(randomNumber);
   return (
     <div className='container'>
       <div className='box'>
         <div className='header'>
-          <p>{randomNumber}</p>
+          {((!result && arrayGuessNumber.length >= 4) || (result)) &&<p>{randomNumber}</p>}
           <h1>Number Guessing Game</h1>
         </div>
         <div className='body'>
@@ -64,7 +64,7 @@ function App() {
           {!result && message && arrayGuessNumber.length < 4 &&<p className='message red'>WRONG!</p>}
           {!result && arrayGuessNumber.length >= 4 && <p className='message black'>Game Over!</p>}
           {result && <p className='message green'>Congratulations!You got it right!</p>}
-          {message && <p>{message}</p>}
+          {!result && message && <p>{message}</p>}
           {!result && arrayGuessNumber.length >= 4 &&
           <button type='button' onClick={startNewGame}>New game</button>}
         </div>
