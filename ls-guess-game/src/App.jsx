@@ -37,7 +37,7 @@ function App() {
     guessNumber.current.value = "";
   }
   const startNewGame = () => {
-    setNewGame(true);
+    setNewGame(!newGame);
     setArrayGuessNumber([]);
     setResult(false);
     setMessage("");
