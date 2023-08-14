@@ -47,7 +47,7 @@ function App() {
     <div className='container'>
       <div className='box'>
         <div className='header'>
-          {((!result && arrayGuessNumber.length >= 4) || (result)) &&<p>{randomNumber}</p>}
+          {((!result && arrayGuessNumber.length >= 4) || (result)) &&<p>Result:{randomNumber}</p>}
           <h1>Number Guessing Game</h1>
         </div>
         <div className='body'>
@@ -56,7 +56,7 @@ function App() {
           <div className='input-field'>
             <p>Enter a guess:</p>
             <input type="number" name='guess-number' className='guess-number' ref={guessNumber} disabled={disable||arrayGuessNumber.length == 4}/>
-            <button type='button' onClick={() => playGame()}>Submit guess</button>
+            <button type='button' onClick={() => playGame()} disabled={disable||arrayGuessNumber.length == 4}>Submit guess</button>
           </div>
         </div>
         <div className='footer'>
@@ -66,7 +66,7 @@ function App() {
           {result && <p className='message green'>Congratulations!You got it right!</p>}
           {!result && message && <p>{message}</p>}
           {!result && arrayGuessNumber.length >= 4 &&
-          <button type='button' onClick={startNewGame}>New game</button>}
+          <button type='button' onClick={startNewGame} style={{width: '150px'}}>New game</button>}
         </div>
       </div>
     </div>
